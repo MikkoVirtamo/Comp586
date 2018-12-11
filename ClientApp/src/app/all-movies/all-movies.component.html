@@ -1,0 +1,17 @@
+<p>
+  all-movies
+</p>
+
+<h3>Here's the list of movies</h3>
+<div *ngIf = "moviesList">
+
+  <ul>
+    <li *ngFor = "let movie of moviesList">
+       <a routerLink= "/moviedetails/{{movie.title}}">
+         {{movie.title}}
+         </a>
+    </li>
+    </ul>
+
+
+</div>
