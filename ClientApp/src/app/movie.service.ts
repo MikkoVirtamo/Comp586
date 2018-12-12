@@ -14,7 +14,7 @@ const httpOptions = {
 
 
 export class MovieService {
-  private Url = 'https://localhost:44382/';
+  private Url = 'https://webapplication420181211022930.azurewebsites.net/';
 
   private api = 'api/Movies';
   private moviesURL = 'api/MoviesLists';

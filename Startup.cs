@@ -26,7 +26,14 @@ namespace WebApplication4
                 options.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
 
 
-
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsPolicy",
+                    builder => builder.AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader()
+                    .AllowCredentials());
+            });
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
@@ -36,6 +43,8 @@ namespace WebApplication4
                 configuration.RootPath = "ClientApp/dist";
             });
         }
+
+
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
@@ -53,6 +62,8 @@ namespace WebApplication4
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseSpaStaticFiles();
+            app.UseCors("CorsPolicy");
+
 
             app.UseMvc(routes =>
             {
